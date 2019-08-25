@@ -9,11 +9,11 @@ namespace Boomerang.Models.Models
 {
     public class Site
     {
-        public Enrollment[] Enrollments { get; set; }
+        public ICollection<Enrollment> Enrollments { get; set; }
 
         public int Id { get; set; }
 
-        public IrcInfo[] IrcInfo { get; set; }
+        public ICollection<IrcInfo> IrcInfo { get; set; }
         public int MaxDownloadLogins { get; set; }
 
         public int MaxUploadLogins { get; set; }

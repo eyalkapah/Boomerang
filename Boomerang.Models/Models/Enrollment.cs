@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Boomerang.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,6 @@ namespace Boomerang.Models.Models
         public int SectionId { get; set; }
         public Site Site { get; set; }
         public int SiteId { get; set; }
-        public int Status { get; set; }
+        public EnrollmentStatus Status { get; set; }
     }
 }

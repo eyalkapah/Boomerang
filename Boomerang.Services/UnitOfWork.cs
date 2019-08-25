@@ -15,6 +15,7 @@ namespace Boomerang.Services
         public IComplexWordRepository ComplexWords { get; set; }
         public IEnrollmentRepository Enrollments { get; set; }
         public IPackageRepository Packages { get; set; }
+        public IPreDbRepository PreDbs { get; set; }
         public IReleaseRepository Releases { get; set; }
         public ISiteRepository Sites { get; set; }
         public IWordRepository Words { get; set; }
@@ -28,6 +29,7 @@ namespace Boomerang.Services
             ComplexWords = new ComplexWordRepository(context);
             Packages = new PackageRepository(context);
             Enrollments = new EnrollmentRepository(context);
+            PreDbs = new PreDbRepository(context);
         }
     }
 }

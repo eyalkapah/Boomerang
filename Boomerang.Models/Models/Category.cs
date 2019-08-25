@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Boomerang.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,9 @@ namespace Boomerang.Models.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public Section[] Sections { get; set; }
+        public ICollection<Section> Sections { get; set; }
 
         //public Section[] Sections { get; set; }
-        public int Type { get; set; }
+        public CategoryType Type { get; set; }
     }
 }

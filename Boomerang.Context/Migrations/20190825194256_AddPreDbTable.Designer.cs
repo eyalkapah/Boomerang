@@ -4,14 +4,16 @@ using Boomerang.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Boomerang.Context.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190825194256_AddPreDbTable")]
+    partial class AddPreDbTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,15 +41,6 @@ namespace Boomerang.Context.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Audio Category",
-                            Name = "Audio",
-                            Type = 1
-                        });
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.ComplexWord", b =>
@@ -189,16 +182,6 @@ namespace Boomerang.Context.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PreDbs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Bot = "SIDB",
-                            Channel = "#scumm-pre",
-                            IsEnabled = true,
-                            Name = "SI-DB"
-                        });
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.Release", b =>
@@ -255,30 +238,6 @@ namespace Boomerang.Context.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Sections");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BubbleLevel = 0,
-                            CategoryId = 1,
-                            Delimiter = "-",
-                            Description = "Mp3 Section",
-                            IsEnabled = true,
-                            Name = "Mp3",
-                            RaceActivityInSeconds = 600
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BubbleLevel = 0,
-                            CategoryId = 1,
-                            Delimiter = "-",
-                            Description = "Flac Section",
-                            IsEnabled = true,
-                            Name = "Flac",
-                            RaceActivityInSeconds = 600
-                        });
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.Site", b =>

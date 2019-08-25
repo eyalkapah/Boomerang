@@ -4,14 +4,16 @@ using Boomerang.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Boomerang.Context.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190825195813_SeedAudioCategory")]
+    partial class SeedAudioCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,30 +257,6 @@ namespace Boomerang.Context.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Sections");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BubbleLevel = 0,
-                            CategoryId = 1,
-                            Delimiter = "-",
-                            Description = "Mp3 Section",
-                            IsEnabled = true,
-                            Name = "Mp3",
-                            RaceActivityInSeconds = 600
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BubbleLevel = 0,
-                            CategoryId = 1,
-                            Delimiter = "-",
-                            Description = "Flac Section",
-                            IsEnabled = true,
-                            Name = "Flac",
-                            RaceActivityInSeconds = 600
-                        });
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.Site", b =>

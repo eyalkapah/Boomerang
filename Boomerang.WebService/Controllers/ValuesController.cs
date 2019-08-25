@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Boomerang.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Boomerang.WebService.Controllers
@@ -10,6 +11,19 @@ namespace Boomerang.WebService.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IUnitOfWork unitOfWork;
+
+        public ValuesController(IUnitOfWork unitOfWork)
+        {
+            this.unitOfWork = unitOfWork;
+        }
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -33,12 +47,6 @@ namespace Boomerang.WebService.Controllers
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
         {
         }
     }

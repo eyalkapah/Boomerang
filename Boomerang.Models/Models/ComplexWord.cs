@@ -8,7 +8,7 @@ namespace Boomerang.Models.Models
 {
     public class ComplexWord : WordBase
     {
-        public Package[] Packages { get; set; }
-        public Word[] Words { get; set; }
+        public ICollection<Package> Packages { get; set; }
+        public ICollection<Word> Words { get; set; }
     }
 }
