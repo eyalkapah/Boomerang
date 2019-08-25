@@ -12,8 +12,6 @@ namespace Boomerang.Models.Models
         //public EnrollmentContract[] Enrollments { get; set; }
         public int Id { get; set; }
 
-        //public IrcInfo[] IrcInfo { get; set; }
-
         public IrcInfo[] IrcInfo { get; set; }
         public int MaxDownloadLogins { get; set; }
 

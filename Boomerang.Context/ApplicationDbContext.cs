@@ -11,8 +11,10 @@ namespace Boomerang.Context
 {
     public class ApplicationDbContext : DbContext
     {
+        public DbSet<Category> Categories { get; set; }
         public DbSet<IrcInfo> IrcInfo { get; set; }
         public DbSet<Release> Releases { get; set; }
+        public DbSet<Section> Sections { get; set; }
         public DbSet<Site> Sites { get; set; }
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
@@ -27,6 +29,8 @@ namespace Boomerang.Context
             builder.ApplyConfiguration(new ReleaseConfiguration());
             builder.ApplyConfiguration(new SiteConfiguration());
             builder.ApplyConfiguration(new IrcInfoConfiguration());
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new SectionConfiguration());
         }
     }
 }

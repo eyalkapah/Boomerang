@@ -11,6 +11,7 @@ namespace Boomerang.Services
 {
     public class UnitOfWork : IUnitOfWork
     {
+        public ICategoryRepository Categories { get; set; }
         public IReleaseRepository Releases { get; set; }
         public ISiteRepository Sites { get; set; }
 
@@ -18,6 +19,7 @@ namespace Boomerang.Services
         {
             Releases = new ReleaseRepository(context);
             Sites = new SiteRepository(context);
+            Categories = new CategoryRepository(context);
         }
     }
 }
