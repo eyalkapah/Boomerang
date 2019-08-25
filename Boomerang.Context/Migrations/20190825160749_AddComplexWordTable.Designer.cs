@@ -4,14 +4,16 @@ using Boomerang.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Boomerang.Context.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190825160749_AddComplexWordTable")]
+    partial class AddComplexWordTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -183,8 +185,6 @@ namespace Boomerang.Context.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(64)");
 
-                    b.Property<int>("ComplexWordId");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("varchar(256)");
@@ -202,8 +202,6 @@ namespace Boomerang.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ComplexWordId");
-
                     b.ToTable("Words");
                 });
 
@@ -220,14 +218,6 @@ namespace Boomerang.Context.Migrations
                     b.HasOne("Boomerang.Models.Models.Category", "Category")
                         .WithMany("Sections")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Boomerang.Models.Models.Word", b =>
-                {
-                    b.HasOne("Boomerang.Models.Models.ComplexWord", "ComplexWord")
-                        .WithMany("Words")
-                        .HasForeignKey("ComplexWordId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

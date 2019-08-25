@@ -16,6 +16,8 @@ namespace Boomerang.Context
         public DbSet<Release> Releases { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Site> Sites { get; set; }
+        public DbSet<Word> Words { get; set; }
+        public DbSet<ComplexWord> ComplexWords { get; set; }
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -31,6 +33,8 @@ namespace Boomerang.Context
             builder.ApplyConfiguration(new IrcInfoConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new SectionConfiguration());
+            builder.ApplyConfiguration(new WordConfiguration());
+            builder.ApplyConfiguration(new ComplexWordConfiguration());
         }
     }
 }
