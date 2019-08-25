@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Boomerang.Services.Repositories
 {
-    public class ReleaseRepository : Repository<Release>, IReleaseRepository
+    public class SiteRepository : Repository<Site>, ISiteRepository
     {
-        public ReleaseRepository(ApplicationDbContext context) : base(context)
+        public SiteRepository(ApplicationDbContext context) : base(context)
         {
         }
     }

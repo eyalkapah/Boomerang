@@ -1,4 +1,4 @@
-﻿using Boomerang.Models.DTOs;
+﻿using Boomerang.Models.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

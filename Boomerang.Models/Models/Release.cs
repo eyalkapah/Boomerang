@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Boomerang.Models.DTOs
+namespace Boomerang.Models.Models
 {
     public class Release
     {
