@@ -12,10 +12,12 @@ namespace Boomerang.Services
     public class UnitOfWork : IUnitOfWork
     {
         public ICategoryRepository Categories { get; set; }
+        public IComplexWordRepository ComplexWords { get; set; }
+        public IEnrollmentRepository Enrollments { get; set; }
+        public IPackageRepository Packages { get; set; }
         public IReleaseRepository Releases { get; set; }
         public ISiteRepository Sites { get; set; }
         public IWordRepository Words { get; set; }
-        public IComplexWordRepository ComplexWords { get; set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -24,6 +26,8 @@ namespace Boomerang.Services
             Categories = new CategoryRepository(context);
             Words = new WordRepository(context);
             ComplexWords = new ComplexWordRepository(context);
+            Packages = new PackageRepository(context);
+            Enrollments = new EnrollmentRepository(context);
         }
     }
 }

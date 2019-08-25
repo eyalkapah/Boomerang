@@ -9,7 +9,8 @@ namespace Boomerang.Models.Models
 {
     public class Site
     {
-        //public EnrollmentContract[] Enrollments { get; set; }
+        public Enrollment[] Enrollments { get; set; }
+
         public int Id { get; set; }
 
         public IrcInfo[] IrcInfo { get; set; }

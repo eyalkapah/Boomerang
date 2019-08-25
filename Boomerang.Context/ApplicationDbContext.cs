@@ -12,12 +12,15 @@ namespace Boomerang.Context
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ComplexWord> ComplexWords { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<IrcInfo> IrcInfo { get; set; }
+        public DbSet<PackageEnrollment> PackageEnrollments { get; set; }
+        public DbSet<Package> Packages { get; set; }
         public DbSet<Release> Releases { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Site> Sites { get; set; }
         public DbSet<Word> Words { get; set; }
-        public DbSet<ComplexWord> ComplexWords { get; set; }
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -35,6 +38,9 @@ namespace Boomerang.Context
             builder.ApplyConfiguration(new SectionConfiguration());
             builder.ApplyConfiguration(new WordConfiguration());
             builder.ApplyConfiguration(new ComplexWordConfiguration());
+            builder.ApplyConfiguration(new PackageEnrollmentConfiguration());
+            builder.ApplyConfiguration(new PackageConfiguration());
+            builder.ApplyConfiguration(new EnrollmentConfiguration());
         }
     }
 }

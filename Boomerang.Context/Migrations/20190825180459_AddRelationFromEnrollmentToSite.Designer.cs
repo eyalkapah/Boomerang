@@ -4,14 +4,16 @@ using Boomerang.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Boomerang.Context.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190825180459_AddRelationFromEnrollmentToSite")]
+    partial class AddRelationFromEnrollmentToSite
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,16 +76,12 @@ namespace Boomerang.Context.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(512)");
 
-                    b.Property<int>("SectionId");
-
                     b.Property<int>("SiteId");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SectionId");
 
                     b.HasIndex("SiteId");
 
@@ -141,19 +139,6 @@ namespace Boomerang.Context.Migrations
                     b.HasIndex("WordId");
 
                     b.ToTable("Packages");
-                });
-
-            modelBuilder.Entity("Boomerang.Models.Models.PackageEnrollment", b =>
-                {
-                    b.Property<int>("EnrollmentId");
-
-                    b.Property<int>("PackageId");
-
-                    b.HasKey("EnrollmentId", "PackageId");
-
-                    b.HasIndex("PackageId");
-
-                    b.ToTable("PackageEnrollments");
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.Release", b =>
@@ -278,11 +263,6 @@ namespace Boomerang.Context.Migrations
 
             modelBuilder.Entity("Boomerang.Models.Models.Enrollment", b =>
                 {
-                    b.HasOne("Boomerang.Models.Models.Section", "Section")
-                        .WithMany("Enrollments")
-                        .HasForeignKey("SectionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Boomerang.Models.Models.Site", "Site")
                         .WithMany("Enrollments")
                         .HasForeignKey("SiteId")
@@ -306,19 +286,6 @@ namespace Boomerang.Context.Migrations
                     b.HasOne("Boomerang.Models.Models.Word", "Word")
                         .WithMany("Packages")
                         .HasForeignKey("WordId");
-                });
-
-            modelBuilder.Entity("Boomerang.Models.Models.PackageEnrollment", b =>
-                {
-                    b.HasOne("Boomerang.Models.Models.Enrollment", "Enrollment")
-                        .WithMany("Packages")
-                        .HasForeignKey("EnrollmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Boomerang.Models.Models.Package", "Package")
-                        .WithMany("Enrollments")
-                        .HasForeignKey("PackageId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.Section", b =>

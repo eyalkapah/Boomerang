@@ -16,6 +16,7 @@ namespace Boomerang.Models.Models
         public int CategoryId { get; set; }
         public char Delimiter { get; set; }
         public string Description { get; set; }
+        public Enrollment[] Enrollments { get; set; }
         public int Id { get; set; }
         public bool IsEnabled { get; set; }
         public string Name { get; set; }

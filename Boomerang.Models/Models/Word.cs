@@ -8,9 +8,10 @@ namespace Boomerang.Models.Models
 {
     public class Word : WordBase
     {
-        public string Pattern { get; set; }
-        public string IgnorePattern { get; set; }
         public ComplexWord ComplexWord { get; set; }
-        public int ComplexWordId { get; set; }
+        public int? ComplexWordId { get; set; }
+        public string IgnorePattern { get; set; }
+        public Package[] Packages { get; set; }
+        public string Pattern { get; set; }
     }
 }
