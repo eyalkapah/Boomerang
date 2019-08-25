@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boomerang.WebService", "Boomerang.WebService\Boomerang.WebService.csproj", "{0D0A393D-69D6-4EEB-8359-80813ECA64A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D0A393D-69D6-4EEB-8359-80813ECA64A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D0A393D-69D6-4EEB-8359-80813ECA64A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D0A393D-69D6-4EEB-8359-80813ECA64A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D0A393D-69D6-4EEB-8359-80813ECA64A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE194B5D-26F8-4A60-9A42-9E2A8AD02644}
+	EndGlobalSection
+EndGlobal
