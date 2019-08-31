@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "On",
+    "description": "Represents full permission enrollment"
+  },
+  {
+    "id": 2,
+    "name": "Upload Only",
+    "description": "Represents upload only permission enrollment"
+  },
+  {
+    "id": 3,
+    "name": "Download Only",
+    "description": "Represents download only permission enrollment"
+  },
+  {
+    "id": 4,
+    "name": "Off",
+    "description": "Represents inactive enrollment"
+  }
+]

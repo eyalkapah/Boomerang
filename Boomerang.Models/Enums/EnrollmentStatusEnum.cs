@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Boomerang.Models.Enums
 {
-    public enum CategoryType
+    public enum EnrollmentStatusEnum
     {
-        Audio = 1,
-        Video,
-        Data,
+        On = 1,
+        UploadOnly,
+        DownloadOnly,
+        Off,
     }
 }

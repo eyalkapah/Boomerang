@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Boomerang.Context.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190831133326_SeedData")]
-    partial class SeedData
+    [Migration("20190831171322_SeedEnrollmentsData")]
+    partial class SeedEnrollmentsData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -138,6 +138,24 @@ namespace Boomerang.Context.Migrations
                     b.HasIndex("SiteId");
 
                     b.ToTable("Enrollments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Affils = "TSP,POW,ZZZZ,BPM",
+                            SectionId = 1,
+                            SiteId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Affils = "AAA, BBB, CCC, DDD",
+                            SectionId = 1,
+                            SiteId = 2,
+                            Status = 1
+                        });
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.IrcInfo", b =>
@@ -157,6 +175,36 @@ namespace Boomerang.Context.Migrations
                     b.HasIndex("SiteId");
 
                     b.ToTable("IrcInfo");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Bot = "pf-bot",
+                            Channel = "pf-spam",
+                            SiteId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Bot = "PiEcE",
+                            Channel = "#puzzlefactory",
+                            SiteId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Bot = "bh-bot",
+                            Channel = "bh-spam",
+                            SiteId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Bot = "bh",
+                            Channel = "#biohazzard",
+                            SiteId = 2
+                        });
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.Package", b =>

@@ -29,6 +29,7 @@ namespace Boomerang.Context
         public DbSet<Section> Sections { get; set; }
         public DbSet<Site> Sites { get; set; }
         public DbSet<Word> Words { get; set; }
+        public DbSet<CategoryType> CategoryTypes { get; set; }
 
         public ApplicationDbContext(DbContextOptions options, IHostingEnvironment hosting) : base(options)
         {
@@ -51,7 +52,11 @@ namespace Boomerang.Context
             builder.ApplyConfiguration(new EnrollmentConfiguration());
             builder.ApplyConfiguration(new PreDbConfiguration());
             builder.ApplyConfiguration(new ComplexWordMapConfiguration());
+            builder.ApplyConfiguration(new CategoryTypeConfiguration());
+            builder.ApplyConfiguration(new EnrollmentStatusConfiguration());
 
+            builder.Seed<CategoryType>(Hosting.ContentRootPath, "categoryType.json");
+            builder.Seed<EnrollmentStatus>(Hosting.ContentRootPath, "enrollmentStatus.json");
             builder.Seed<Category>(Hosting.ContentRootPath, "categories.json");
             builder.Seed<Word>(Hosting.ContentRootPath, "words.json");
             builder.Seed<ComplexWord>(Hosting.ContentRootPath, "complexWords.json");
@@ -61,6 +66,8 @@ namespace Boomerang.Context
             builder.Seed<Section>(Hosting.ContentRootPath, "sections.json");
             builder.Seed<Site>(Hosting.ContentRootPath, "sites.json");
             builder.Seed<IrcInfo>(Hosting.ContentRootPath, "ircInfo.json");
+            builder.Seed<Enrollment>(Hosting.ContentRootPath, "enrollments.json");
+            builder.Seed<PackageEnrollment>(Hosting.ContentRootPath, "packageEnrollment.json");
         }
     }
 }

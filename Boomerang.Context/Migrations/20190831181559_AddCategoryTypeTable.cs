@@ -1,20 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Boomerang.Context.Migrations
 {
-    public partial class SeedIrcInfoData : Migration
+    public partial class AddCategoryTypeTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.InsertData(
-                table: "IrcInfo",
-                columns: new[] { "Id", "Bot", "Channel", "SiteId" },
-                values: new object[,]
+            migrationBuilder.CreateTable(
+                name: "CategoryType",
+                columns: table => new
                 {
-                    { 1, "pf-bot", "pf-spam", 1 },
-                    { 2, "PiEcE", "#puzzlefactory", 1 },
-                    { 3, "bh-bot", "bh-spam", 2 },
-                    { 4, "bh", "#biohazzard", 2 }
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "varchar(32)", nullable: false),
+                    Description = table.Column<string>(type: "varchar(256)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoryType", x => x.Id);
                 });
 
             migrationBuilder.UpdateData(
@@ -34,25 +38,8 @@ namespace Boomerang.Context.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "IrcInfo",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "IrcInfo",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "IrcInfo",
-                keyColumn: "Id",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "IrcInfo",
-                keyColumn: "Id",
-                keyValue: 4);
+            migrationBuilder.DropTable(
+                name: "CategoryType");
 
             migrationBuilder.UpdateData(
                 table: "Sections",

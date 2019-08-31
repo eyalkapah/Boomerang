@@ -15,7 +15,6 @@ namespace Boomerang.Models.Models
 
         public ICollection<Section> Sections { get; set; }
 
-        //public Section[] Sections { get; set; }
-        public CategoryType Type { get; set; }
+        public CategoryTypeEnum Type { get; set; }
     }
 }

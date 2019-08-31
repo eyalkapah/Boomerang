@@ -18,6 +18,6 @@ namespace Boomerang.Models.Models
         public int SectionId { get; set; }
         public Site Site { get; set; }
         public int SiteId { get; set; }
-        public EnrollmentStatus Status { get; set; }
+        public EnrollmentStatusEnum Status { get; set; }
     }
 }

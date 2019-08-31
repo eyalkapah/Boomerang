@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Audio",
+    "description": "Represents all audio related categories"
+  },
+  {
+    "id": 2,
+    "name": "Video",
+    "description": "Represents all video related categories"
+  },
+  {
+    "id": 3,
+    "name": "Data",
+    "description": "Represents all data related categories"
+  }
+
+]

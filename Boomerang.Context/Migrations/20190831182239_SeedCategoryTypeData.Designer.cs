@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Boomerang.Context.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190831133634_SeedIrcInfoData")]
-    partial class SeedIrcInfoData
+    [Migration("20190831182239_SeedCategoryTypeData")]
+    partial class SeedCategoryTypeData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,44 @@ namespace Boomerang.Context.Migrations
                             Description = "Audio Category",
                             Name = "audio",
                             Type = 1
+                        });
+                });
+
+            modelBuilder.Entity("Boomerang.Models.Models.CategoryType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(32)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoryType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Represents all audio related categories",
+                            Name = "Audio"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Represents all video related categories",
+                            Name = "Video"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Represents all data related categories",
+                            Name = "Data"
                         });
                 });
 
@@ -138,6 +176,24 @@ namespace Boomerang.Context.Migrations
                     b.HasIndex("SiteId");
 
                     b.ToTable("Enrollments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Affils = "TSP,POW,ZZZZ,BPM",
+                            SectionId = 1,
+                            SiteId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Affils = "AAA, BBB, CCC, DDD",
+                            SectionId = 1,
+                            SiteId = 2,
+                            Status = 1
+                        });
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.IrcInfo", b =>
@@ -279,6 +335,43 @@ namespace Boomerang.Context.Migrations
                     b.HasIndex("PackageId");
 
                     b.ToTable("PackageEnrollments");
+
+                    b.HasData(
+                        new
+                        {
+                            EnrollmentId = 1,
+                            PackageId = 1
+                        },
+                        new
+                        {
+                            EnrollmentId = 1,
+                            PackageId = 2
+                        },
+                        new
+                        {
+                            EnrollmentId = 1,
+                            PackageId = 3
+                        },
+                        new
+                        {
+                            EnrollmentId = 1,
+                            PackageId = 4
+                        },
+                        new
+                        {
+                            EnrollmentId = 2,
+                            PackageId = 1
+                        },
+                        new
+                        {
+                            EnrollmentId = 2,
+                            PackageId = 2
+                        },
+                        new
+                        {
+                            EnrollmentId = 2,
+                            PackageId = 3
+                        });
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.PreDb", b =>

@@ -1,0 +1,30 @@
+[
+  {
+    "enrollmentId": 1,
+    "packageId": 1
+  },
+  {
+    "enrollmentId": 1,
+    "packageId": 2
+  },
+  {
+    "enrollmentId": 1,
+    "packageId": 3
+  },
+  {
+    "enrollmentId": 1,
+    "packageId": 4
+  },
+  {
+    "enrollmentId": 2,
+    "packageId": 1
+  },
+  {
+    "enrollmentId": 2,
+    "packageId": 2
+  },
+  {
+    "enrollmentId": 2,
+    "packageId": 3
+  }
+]

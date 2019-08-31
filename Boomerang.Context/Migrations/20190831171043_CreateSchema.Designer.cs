@@ -4,14 +4,16 @@ using Boomerang.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Boomerang.Context.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190831171043_CreateSchema")]
+    partial class CreateSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,44 +49,6 @@ namespace Boomerang.Context.Migrations
                             Description = "Audio Category",
                             Name = "audio",
                             Type = 1
-                        });
-                });
-
-            modelBuilder.Entity("Boomerang.Models.Models.CategoryType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("varchar(256)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(32)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CategoryType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Represents all audio related categories",
-                            Name = "Audio"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Represents all video related categories",
-                            Name = "Video"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Represents all data related categories",
-                            Name = "Data"
                         });
                 });
 
@@ -174,68 +138,6 @@ namespace Boomerang.Context.Migrations
                     b.HasIndex("SiteId");
 
                     b.ToTable("Enrollments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Affils = "TSP,POW,ZZZZ,BPM",
-                            SectionId = 1,
-                            SiteId = 1,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Affils = "AAA, BBB, CCC, DDD",
-                            SectionId = 1,
-                            SiteId = 2,
-                            Status = 1
-                        });
-                });
-
-            modelBuilder.Entity("Boomerang.Models.Models.EnrollmentStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("varchar(256)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(32)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EnrollmentStatus");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Represents full permission enrollment",
-                            Name = "On"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Represents upload only permission enrollment",
-                            Name = "Upload Only"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Represents download only permission enrollment",
-                            Name = "Download Only"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Represents inactive enrollment",
-                            Name = "Off"
-                        });
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.IrcInfo", b =>
@@ -377,43 +279,6 @@ namespace Boomerang.Context.Migrations
                     b.HasIndex("PackageId");
 
                     b.ToTable("PackageEnrollments");
-
-                    b.HasData(
-                        new
-                        {
-                            EnrollmentId = 1,
-                            PackageId = 1
-                        },
-                        new
-                        {
-                            EnrollmentId = 1,
-                            PackageId = 2
-                        },
-                        new
-                        {
-                            EnrollmentId = 1,
-                            PackageId = 3
-                        },
-                        new
-                        {
-                            EnrollmentId = 1,
-                            PackageId = 4
-                        },
-                        new
-                        {
-                            EnrollmentId = 2,
-                            PackageId = 1
-                        },
-                        new
-                        {
-                            EnrollmentId = 2,
-                            PackageId = 2
-                        },
-                        new
-                        {
-                            EnrollmentId = 2,
-                            PackageId = 3
-                        });
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.PreDb", b =>
