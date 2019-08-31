@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "PF",
+    "status": 1,
+    "totalLogins": 2,
+    "maxDownloadLogins": 2,
+    "maxUploadLogins": 2,
+    "rank": 6
+  },
+  {
+    "id": 2,
+    "name": "BH",
+    "status": 1,
+    "totalLogins": 2,
+    "maxDownloadLogins": 2,
+    "maxUploadLogins": 2,
+    "rank": 6
+  }
+]

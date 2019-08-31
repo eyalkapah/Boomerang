@@ -25,6 +25,7 @@ namespace Boomerang.Configurations.Configurations
             builder.Property(x => x.RaceActivityInSeconds).HasColumnType("int").IsRequired();
 
             //builder.HasMany(x => x.Sections).WithOne(i => i.Category).HasForeignKey(i => i.CategoryId);
+            builder.HasOne(x => x.Package).WithMany(x => x.Sections).HasForeignKey(x => x.PackageId);
         }
     }
 }

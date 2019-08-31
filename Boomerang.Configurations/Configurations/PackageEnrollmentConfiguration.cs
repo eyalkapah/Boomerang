@@ -30,7 +30,7 @@ namespace Boomerang.Configurations.Configurations
 
             builder.HasOne(ep => ep.Package)
                 .WithMany(c => c.Enrollments)
-                .HasForeignKey(bc => bc.PackageId);
+                .HasForeignKey(bc => bc.PackageId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

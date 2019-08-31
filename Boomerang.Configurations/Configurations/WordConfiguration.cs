@@ -20,11 +20,8 @@ namespace Boomerang.Configurations.Configurations
             builder.Property(x => x.Name).IsRequired().HasColumnType("varchar(32)").IsRequired();
             builder.Property(x => x.Description).HasColumnType("varchar(256)").IsRequired();
             builder.Property(x => x.Classification).HasColumnType("varchar(64)").IsRequired();
-            builder.Property(x => x.Pattern).HasColumnType("varchar(512)").IsRequired();
-            builder.Property(x => x.IgnorePattern).HasColumnType("varchar(512)");
-
-            builder.HasOne(c => c.ComplexWord).WithMany(w => w.Words).HasForeignKey(w => w.ComplexWordId);
-            //builder.HasMany(x => x.Sections).WithOne(i => i.Category).HasForeignKey(i => i.CategoryId);
+            builder.Property(x => x.Pattern).HasColumnType("varchar(2048)").IsRequired();
+            builder.Property(x => x.IgnorePattern).HasColumnType("varchar(2048)");
         }
     }
 }

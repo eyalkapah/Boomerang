@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "SIDB",
+    "channel": "#scumm-pre",
+    "bot": "SIDB",
+    "enabled": true
+  },
+  {
+    "id": 2,
+    "name": "ARDB",
+    "channel": "#Panicpre",
+    "bot": "ARDB",
+    "enabled": true
+  }
+]

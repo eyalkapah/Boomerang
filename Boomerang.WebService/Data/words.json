@@ -1,0 +1,303 @@
+[
+  {
+    "id": 1,
+    "name": "MP3",
+    "classification": "SECTION",
+    "description": "Mp3 section",
+    "pattern": "(mp3)",
+    "ignore": "",
+    "forbidden": "(flac)"
+  },
+  {
+    "id": 2,
+    "name": "EN_ONLY",
+    "classification": "LANGUAGES",
+    "description": "English language only",
+    "pattern": "[%delimiter%](aa|ab|ae|af|ak|am|an|ar|as|av|ay|az|ba|be|bg|bh|bi|bm|bn|bo|br|bs|ca|ce|ch|co|cr|cs|cu|cv|cy|da|de|dv|dz|ee|el|en|eo|es|et|eu|fa|ff|fi|fj|fo|fr|fy|ga|gd|gl|gn|gu|gv|ha|he|hi|ho|hr|ht|hu|hy|hz|ia|id|ie|ig|ii|ik|io|is|it|iu|ja|jv|ka|kg|ki|kj|kk|kl|km|kn|ko|kr|ks|ku|kv|kw|ky|la|lb|lg|li|ln|lo|lt|lu|lv|mg|mh|mi|mk|ml|mn|mr|ms|mt|my|na|nb|nd|ne|ng|nl|nn|no|nr|nv|ny|oc|oj|om|or|os|pa|pi|pl|ps|pt|qu|rm|rn|ro|ru|rw|sa|sc|sd|se|sg|si|sk|sl|sm|sn|so|sq|sr|ss|st|su|sv|sw|ta|te|tg|th|ti|tk|tl|tn|to|tr|ts|tt|tw|ty|ug|uk|ur|uz|ve|vi|vo|wa|wo|xh|yi|yo|za|zh|zu)[%delimiter%]",
+    "ignore": "",
+    "forbidden": ""
+  },
+  {
+    "id": 3,
+    "name": "EN_AND_DUTCH",
+    "classification": "LANGUAGES",
+    "description": "English and Dutch language only",
+    "pattern": "[%delimiter%](aa|ab|ae|af|ak|am|an|ar|as|av|ay|az|ba|be|bg|bh|bi|bm|bn|bo|br|bs|ca|ce|ch|co|cr|cs|cu|cv|cy|da|de|dv|dz|ee|el|en|eo|es|et|eu|fa|ff|fi|fj|fo|fr|fy|ga|gd|gl|gn|gu|gv|ha|he|hi|ho|hr|ht|hu|hy|hz|ia|id|ie|ig|ii|ik|io|is|it|iu|ja|jv|ka|kg|ki|kj|kk|kl|km|kn|ko|kr|ks|ku|kv|kw|ky|la|lb|lg|li|ln|lo|lt|lu|lv|mg|mh|mi|mk|ml|mn|mr|ms|mt|my|na|nb|nd|ne|ng|nl|nn|no|nr|nv|ny|oc|oj|om|or|os|pa|pi|pl|ps|pt|qu|rm|rn|ro|ru|rw|sa|sc|sd|se|sg|si|sk|sl|sm|sn|so|sq|sr|ss|st|su|sv|sw|ta|te|tg|th|ti|tk|tl|tn|to|tr|ts|tt|tw|ty|ug|uk|ur|uz|ve|vi|vo|wa|wo|xh|yi|yo|za|zh|zu)[%delimiter%]",
+    "ignore": "[%delimiter%](nl)[%delimiter%]",
+    "forbidden": ""
+  },
+  {
+    "id": 4,
+    "name": "HE banned",
+    "classification": "LANGUAGES",
+    "description": "Allow all languages except for Hebrew",
+    "pattern": "[%delimiter%](aa|ab|ae|af|ak|am|an|ar|as|av|ay|az|ba|be|bg|bh|bi|bm|bn|bo|br|bs|ca|ce|ch|co|cr|cs|cu|cv|cy|da|de|dv|dz|ee|el|en|eo|es|et|eu|fa|ff|fi|fj|fo|fr|fy|ga|gd|gl|gn|gu|gv|ha|he|hi|ho|hr|ht|hu|hy|hz|ia|id|ie|ig|ii|ik|io|is|it|iu|ja|jv|ka|kg|ki|kj|kk|kl|km|kn|ko|kr|ks|ku|kv|kw|ky|la|lb|lg|li|ln|lo|lt|lu|lv|mg|mh|mi|mk|ml|mn|mr|ms|mt|my|na|nb|nd|ne|ng|nl|nn|no|nr|nv|ny|oc|oj|om|or|os|pa|pi|pl|ps|pt|qu|rm|rn|ro|ru|rw|sa|sc|sd|se|sg|si|sk|sl|sm|sn|so|sq|sr|ss|st|su|sv|sw|ta|te|tg|th|ti|tk|tl|tn|to|tr|ts|tt|tw|ty|ug|uk|ur|uz|ve|vi|vo|wa|wo|xh|yi|yo|za|zh|zu)[%delimiter%]",
+    "ignore": "",
+    "forbidden": "[%delimiter%](HE)[%delimiter%]"
+  },
+  {
+    "id": 5,
+    "name": "Current year only",
+    "classification": "YEAR",
+    "description": "Allow current year only",
+    "pattern": "[%delimiter%](%current_year%)[%delimiter%]",
+    "ignore": "",
+    "forbidden": "[%delimiter%](((19[0-9][0-9]))|(|20[0|1][0-8]))[%delimiter%]"
+  },
+  {
+    "id": 6,
+    "name": "Internal",
+    "classification": "INTERNAL",
+    "description": "Describes if released for internal purpose",
+    "pattern": "([%delimiter%](INT|INTERNAL)[%delimiter%])",
+    "ignore": ""
+  },
+  {
+    "id": 7,
+    "name": "3 Max CDs",
+    "classification": "MAX CDS",
+    "description": "less or equal to 3 CDs",
+    "pattern": "[-\\(](([4-9])|([1-9][0-9])+)CDS?[-\\)]",
+    "ignore": ""
+  },
+  {
+    "id": 8,
+    "name": "Mp3 safe groups",
+    "classification": "SAFE_GROUPS",
+    "description": "contains mp3 safe groups",
+    "pattern": "[-](TSP|SIQ|GNVR|ROD|AGD|B2R|ALPMP3|WLM|CR|AGW|MUJI|ENTiTLED)",
+    "ignore": ""
+  },
+  {
+    "id": 9,
+    "name": "CD",
+    "classification": "SOURCES",
+    "description": "CD regex",
+    "pattern": "[%delimiter%](cd|retail|cdm)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 10,
+    "name": "BOOTLEG",
+    "classification": "SOURCES",
+    "description": "Bootleg regex",
+    "pattern": "[%delimiter%](bootleg)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 11,
+    "name": "DVD",
+    "classification": "SOURCES",
+    "description": "DVD regex",
+    "pattern": "[%delimiter%](dvd)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 12,
+    "name": "HOMEMADE",
+    "classification": "SOURCES",
+    "description": "Homemade regex",
+    "pattern": "[%delimiter%](Homemade)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 13,
+    "name": "MAG",
+    "classification": "SOURCES",
+    "description": "Magazing regex",
+    "pattern": "[%delimiter%](mag|magazine)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 14,
+    "name": "SAMPLER",
+    "classification": "SOURCES",
+    "description": "Sampler regex",
+    "pattern": "[%delimiter%](Sampler)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 15,
+    "name": "TV",
+    "classification": "SOURCES",
+    "description": "TV regex",
+    "pattern": "[%delimiter%](tv)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 16,
+    "name": "VINYL",
+    "classification": "SOURCES",
+    "description": "Vinyl regex",
+    "pattern": "[%delimiter%](vinyl|vls|ep|lp)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 17,
+    "name": "WEB",
+    "classification": "SOURCES",
+    "description": "Web regex",
+    "pattern": "[%delimiter%](web|freeweb)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 18,
+    "name": "DEMO",
+    "classification": "SOURCES",
+    "description": "Demo regex",
+    "pattern": "[%delimiter%](demo)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 19,
+    "name": "PROMO",
+    "classification": "SOURCES",
+    "description": "Promo regex",
+    "pattern": "[%delimiter%](promo)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 20,
+    "name": "xPOP",
+    "classification": "XPOP",
+    "description": "Foreign pop regex",
+    "pattern": "[%delimiter%]((K|X|J)POP)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 21,
+    "name": "DIGIPAK",
+    "classification": "SOURCES",
+    "description": "Digipak regex",
+    "pattern": "[%delimiter%](digipak)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 22,
+    "name": "TAPE",
+    "classification": "SOURCES",
+    "description": "Tape regex",
+    "pattern": "[%delimiter%](tape|mixtape)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 23,
+    "name": "ABOOK",
+    "classification": "SOURCES",
+    "description": "Audio book regex",
+    "pattern": "[%delimiter%](abook|audiobook)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 24,
+    "name": "CDM",
+    "classification": "SOURCES",
+    "description": "Cdm regex",
+    "pattern": "[%delimiter%](cdm)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 25,
+    "name": "CDS",
+    "classification": "SOURCES",
+    "description": "Cds regex",
+    "pattern": "[%delimiter%](cds)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 26,
+    "name": "LIVE_IN",
+    "classification": "SOURCES",
+    "description": "Live in regex",
+    "pattern": "[%delimiter%](live_in)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 27,
+    "name": "LIVE_AT",
+    "classification": "SOURCES",
+    "description": "Live at regex",
+    "pattern": "[%delimiter%](live_at)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 28,
+    "name": "CABLE",
+    "classification": "SOURCES",
+    "description": "Cable regex",
+    "pattern": "[%delimiter%](cable)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 29,
+    "name": "DVB",
+    "classification": "SOURCES",
+    "description": "Dvb regex",
+    "pattern": "[%delimiter%](dvb(s)?)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 30,
+    "name": "DAT",
+    "classification": "SOURCES",
+    "description": "Dat regex",
+    "pattern": "[%delimiter%](dat)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 31,
+    "name": "SBD",
+    "classification": "SOURCES",
+    "description": "Sbd regex",
+    "pattern": "[%delimiter%](sbd)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 32,
+    "name": "DAB",
+    "classification": "SOURCES",
+    "description": "dab regex",
+    "pattern": "[%delimiter%](dab)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 33,
+    "name": "RADIO",
+    "classification": "SOURCES",
+    "description": "Radio regex",
+    "pattern": "[%delimiter%](radio)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 34,
+    "name": "LINE",
+    "classification": "SOURCES",
+    "description": "Line regex",
+    "pattern": "[%delimiter%](line)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 35,
+    "name": "FRESHFM",
+    "classification": "SOURCES",
+    "description": "FreshFM regex",
+    "pattern": "[%delimiter%](freshfm)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 36,
+    "name": "FM",
+    "classification": "SOURCES",
+    "description": "FM regex",
+    "pattern": "[%delimiter%](FM)[%delimiter%]",
+    "ignore": ""
+  },
+  {
+    "id": 37,
+    "name": "SAT",
+    "classification": "SOURCES",
+    "description": "SAT regex",
+    "pattern": "[%delimiter%](SAT)[%delimiter%]",
+    "ignore": ""
+  }
+]

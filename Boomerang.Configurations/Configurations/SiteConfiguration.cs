@@ -22,8 +22,6 @@ namespace Boomerang.Configurations.Configurations
             builder.Property(x => x.TotalLogins).HasColumnType("int").IsRequired();
             builder.Property(x => x.MaxDownloadLogins).HasColumnType("int").IsRequired();
             builder.Property(x => x.MaxUploadLogins).HasColumnType("int").IsRequired();
-
-            builder.HasMany(x => x.IrcInfo).WithOne(i => i.Site).HasForeignKey(i => i.SiteId);
         }
     }
 }

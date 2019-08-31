@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "categoryId": 1,
+    "name": "Mp3",
+    "description": "Mp3 Section",
+    "packageId": 1,
+    "delimiter": "-",
+    "bubbleLevel": 0,
+    "raceActivityInSeconds": 600,
+    "enabled": true
+  },
+  {
+    "id": 2,
+    "categoryId": 1,
+    "name": "Flac",
+    "description": "Flac Section",
+    "packageId": 2,
+    "delimiter": "-",
+    "bubbleLevel": 0,
+    "raceActivityInSeconds": 600,
+    "enabled": false
+  }
+]

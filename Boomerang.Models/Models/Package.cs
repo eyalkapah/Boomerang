@@ -17,6 +17,7 @@ namespace Boomerang.Models.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
+        public ICollection<Section> Sections { get; set; }
         public Word Word { get; set; }
         public int? WordId { get; set; }
     }

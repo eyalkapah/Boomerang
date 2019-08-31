@@ -1,9 +1,13 @@
 ﻿using Boomerang.Configurations.Configurations;
+using Boomerang.Context.Extensions;
 using Boomerang.Models.Enums;
 using Boomerang.Models.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +17,10 @@ namespace Boomerang.Context
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ComplexWordMap> ComplexWordMap { get; set; }
         public DbSet<ComplexWord> ComplexWords { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
+        public IHostingEnvironment Hosting { get; }
         public DbSet<IrcInfo> IrcInfo { get; set; }
         public DbSet<PackageEnrollment> PackageEnrollments { get; set; }
         public DbSet<Package> Packages { get; set; }
@@ -24,8 +30,9 @@ namespace Boomerang.Context
         public DbSet<Site> Sites { get; set; }
         public DbSet<Word> Words { get; set; }
 
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        public ApplicationDbContext(DbContextOptions options, IHostingEnvironment hosting) : base(options)
         {
+            Hosting = hosting;
             Database.Migrate();
         }
 
@@ -35,7 +42,6 @@ namespace Boomerang.Context
 
             builder.ApplyConfiguration(new ReleaseConfiguration());
             builder.ApplyConfiguration(new SiteConfiguration());
-            builder.ApplyConfiguration(new IrcInfoConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new SectionConfiguration());
             builder.ApplyConfiguration(new WordConfiguration());
@@ -44,47 +50,17 @@ namespace Boomerang.Context
             builder.ApplyConfiguration(new PackageConfiguration());
             builder.ApplyConfiguration(new EnrollmentConfiguration());
             builder.ApplyConfiguration(new PreDbConfiguration());
+            builder.ApplyConfiguration(new ComplexWordMapConfiguration());
 
-            builder.Entity<PreDb>().HasData(new PreDb
-            {
-                Id = 1,
-                Name = "SI-DB",
-                Channel = "#scumm-pre",
-                Bot = "SIDB",
-                IsEnabled = true
-            });
-
-            builder.Entity<Category>().HasData(new Category
-            {
-                Id = 1,
-                Name = "Audio",
-                Type = CategoryType.Audio,
-                Description = "Audio Category"
-            });
-
-            builder.Entity<Section>().HasData(new Section
-            {
-                Id = 1,
-                Name = "Mp3",
-                CategoryId = 1,
-                Description = "Mp3 Section",
-                Delimiter = '-',
-                BubbleLevel = 0,
-                RaceActivityInSeconds = 600,
-                IsEnabled = true
-            });
-
-            builder.Entity<Section>().HasData(new Section
-            {
-                Id = 2,
-                Name = "Flac",
-                CategoryId = 1,
-                Description = "Flac Section",
-                Delimiter = '-',
-                BubbleLevel = 0,
-                RaceActivityInSeconds = 600,
-                IsEnabled = true
-            });
+            builder.Seed<Category>(Hosting.ContentRootPath, "categories.json");
+            builder.Seed<Word>(Hosting.ContentRootPath, "words.json");
+            builder.Seed<ComplexWord>(Hosting.ContentRootPath, "complexWords.json");
+            builder.Seed<ComplexWordMap>(Hosting.ContentRootPath, "complexWordMap.json");
+            builder.Seed<PreDb>(Hosting.ContentRootPath, "preDb.json");
+            builder.Seed<Package>(Hosting.ContentRootPath, "packages.json");
+            builder.Seed<Section>(Hosting.ContentRootPath, "sections.json");
+            builder.Seed<Site>(Hosting.ContentRootPath, "sites.json");
+            builder.Seed<IrcInfo>(Hosting.ContentRootPath, "ircInfo.json");
         }
     }
 }

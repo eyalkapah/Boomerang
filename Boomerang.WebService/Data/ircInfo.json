@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "channel": "pf-spam",
+    "bot": "pf-bot",
+    "siteId": 1
+  },
+  {
+    "id": 2,
+    "channel": "#puzzlefactory",
+    "bot": "PiEcE",
+    "siteId": 1
+  },
+  {
+    "id": 3,
+    "channel": "bh-spam",
+    "bot": "bh-bot",
+    "siteId": 2
+  },
+  {
+    "id": 4,
+    "channel": "#biohazzard",
+    "bot": "bh",
+    "siteId": 2
+  }
+]

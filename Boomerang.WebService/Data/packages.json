@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Ban Web Resources",
+    "description": "Ban Web Resources",
+    "wordId": 17,
+    "applicability": 1
+  },
+  {
+    "id": 2,
+    "name": "Ban Live Resources",
+    "description": "Ban Live Resources",
+    "complexWordId": 1,
+    "applicability": 1
+  },
+  {
+    "id": 3,
+    "name": "Ban Internal Resources",
+    "description": "Ban Internal Resources",
+    "wordId": 6,
+    "applicability": 1
+  },
+  {
+    "id": 4,
+    "name": "Allow English Only",
+    "description": "Allow English Only",
+    "wordId": 2,
+    "applicability": 1
+  },
+  {
+    "id": 5,
+    "name": "Allow EN|NL Only",
+    "description": "Allow EN|NL Only",
+    "wordId": 3,
+    "applicability": 1
+  },
+  {
+    "id": 6,
+    "wordId": 1,
+    "description": "Mp3 patterns",
+    "name": "Mp3 patterns",
+    "applicability": 3
+  }
+]

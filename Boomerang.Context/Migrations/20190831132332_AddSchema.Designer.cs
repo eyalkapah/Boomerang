@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Boomerang.Context.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190825174645_AlterRelationFromWordToComplexWord")]
-    partial class AlterRelationFromWordToComplexWord
+    [Migration("20190831132332_AddSchema")]
+    partial class AddSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,19 +66,54 @@ namespace Boomerang.Context.Migrations
                     b.ToTable("ComplexWords");
                 });
 
+            modelBuilder.Entity("Boomerang.Models.Models.ComplexWordMap", b =>
+                {
+                    b.Property<int>("WordId");
+
+                    b.Property<int>("ComplexWordId");
+
+                    b.HasKey("WordId", "ComplexWordId");
+
+                    b.HasIndex("ComplexWordId");
+
+                    b.ToTable("ComplexWordMap");
+                });
+
+            modelBuilder.Entity("Boomerang.Models.Models.Enrollment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Affils")
+                        .IsRequired()
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<int>("SectionId");
+
+                    b.Property<int>("SiteId");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SectionId");
+
+                    b.HasIndex("SiteId");
+
+                    b.ToTable("Enrollments");
+                });
+
             modelBuilder.Entity("Boomerang.Models.Models.IrcInfo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Bot")
-                        .IsRequired()
-                        .HasColumnType("varchar(32)");
+                    b.Property<string>("Bot");
 
-                    b.Property<string>("Channel")
-                        .IsRequired()
-                        .HasColumnType("varchar(32)");
+                    b.Property<string>("Channel");
 
                     b.Property<int>("SiteId");
 
@@ -101,7 +136,6 @@ namespace Boomerang.Context.Migrations
                     b.Property<int?>("ComplexWordId");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("varchar(256)");
 
                     b.Property<string>("Name")
@@ -117,6 +151,45 @@ namespace Boomerang.Context.Migrations
                     b.HasIndex("WordId");
 
                     b.ToTable("Packages");
+                });
+
+            modelBuilder.Entity("Boomerang.Models.Models.PackageEnrollment", b =>
+                {
+                    b.Property<int>("EnrollmentId");
+
+                    b.Property<int>("PackageId");
+
+                    b.HasKey("EnrollmentId", "PackageId");
+
+                    b.HasIndex("PackageId");
+
+                    b.ToTable("PackageEnrollments");
+                });
+
+            modelBuilder.Entity("Boomerang.Models.Models.PreDb", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Bot")
+                        .IsRequired()
+                        .HasColumnType("varchar(32)");
+
+                    b.Property<string>("Channel")
+                        .IsRequired()
+                        .HasColumnType("varchar(64)");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(32)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PreDbs");
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.Release", b =>
@@ -165,12 +238,16 @@ namespace Boomerang.Context.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(32)");
 
+                    b.Property<int>("PackageId");
+
                     b.Property<int>("RaceActivityInSeconds")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("PackageId");
 
                     b.ToTable("Sections");
                 });
@@ -215,14 +292,12 @@ namespace Boomerang.Context.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(64)");
 
-                    b.Property<int?>("ComplexWordId");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("varchar(256)");
 
                     b.Property<string>("IgnorePattern")
-                        .HasColumnType("varchar(512)");
+                        .HasColumnType("varchar(2048)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -230,13 +305,37 @@ namespace Boomerang.Context.Migrations
 
                     b.Property<string>("Pattern")
                         .IsRequired()
-                        .HasColumnType("varchar(512)");
+                        .HasColumnType("varchar(2048)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ComplexWordId");
-
                     b.ToTable("Words");
+                });
+
+            modelBuilder.Entity("Boomerang.Models.Models.ComplexWordMap", b =>
+                {
+                    b.HasOne("Boomerang.Models.Models.ComplexWord", "ComplexWord")
+                        .WithMany("Words")
+                        .HasForeignKey("ComplexWordId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Boomerang.Models.Models.Word", "Word")
+                        .WithMany("ComplexWords")
+                        .HasForeignKey("WordId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Boomerang.Models.Models.Enrollment", b =>
+                {
+                    b.HasOne("Boomerang.Models.Models.Section", "Section")
+                        .WithMany("Enrollments")
+                        .HasForeignKey("SectionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Boomerang.Models.Models.Site", "Site")
+                        .WithMany("Enrollments")
+                        .HasForeignKey("SiteId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Boomerang.Models.Models.IrcInfo", b =>
@@ -258,19 +357,30 @@ namespace Boomerang.Context.Migrations
                         .HasForeignKey("WordId");
                 });
 
+            modelBuilder.Entity("Boomerang.Models.Models.PackageEnrollment", b =>
+                {
+                    b.HasOne("Boomerang.Models.Models.Enrollment", "Enrollment")
+                        .WithMany("Packages")
+                        .HasForeignKey("EnrollmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Boomerang.Models.Models.Package", "Package")
+                        .WithMany("Enrollments")
+                        .HasForeignKey("PackageId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("Boomerang.Models.Models.Section", b =>
                 {
                     b.HasOne("Boomerang.Models.Models.Category", "Category")
                         .WithMany("Sections")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
 
-            modelBuilder.Entity("Boomerang.Models.Models.Word", b =>
-                {
-                    b.HasOne("Boomerang.Models.Models.ComplexWord", "ComplexWord")
-                        .WithMany("Words")
-                        .HasForeignKey("ComplexWordId");
+                    b.HasOne("Boomerang.Models.Models.Package", "Package")
+                        .WithMany("Sections")
+                        .HasForeignKey("PackageId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
