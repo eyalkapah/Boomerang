@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "sectionId": 1,
+    "affils": "TSP,POW,ZZZZ,BPM",
+    "status": 1
+  },
+  {
+    "id": 2,
+    "sectionId": 1,
+    "affils": "AAA, BBB, CCC, DDD",
+    "status": 1
+  }
+]
