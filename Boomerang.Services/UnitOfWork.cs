@@ -1,4 +1,5 @@
-﻿using Boomerang.Context;
+﻿using AutoMapper;
+using Boomerang.Context;
 using Boomerang.Contracts.Interfaces;
 using Boomerang.Services.Repositories;
 using System;
@@ -20,11 +21,11 @@ namespace Boomerang.Services
         public ISiteRepository Sites { get; set; }
         public IWordRepository Words { get; set; }
 
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(ApplicationDbContext context, IMapper mapper)
         {
             Releases = new ReleaseRepository(context);
             Sites = new SiteRepository(context);
-            Categories = new CategoryRepository(context);
+            Categories = new CategoryRepository(context, mapper);
             Words = new WordRepository(context);
             ComplexWords = new ComplexWordRepository(context);
             Packages = new PackageRepository(context);

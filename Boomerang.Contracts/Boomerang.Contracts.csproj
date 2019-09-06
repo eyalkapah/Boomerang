@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Boomerang.Dtos\Boomerang.Dtos.csproj" />
     <ProjectReference Include="..\Boomerang.Models\Boomerang.Models.csproj" />
   </ItemGroup>
 

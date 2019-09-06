@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Boomerang.Contracts.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Boomerang.Services
 {
     public interface IUnitOfWork
     {
-        
+        ICategoryRepository Categories { get; set; }
+        ISiteRepository Sites { get; set; }
     }
 }

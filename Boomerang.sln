@@ -7,15 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boomerang.WebService", "Boo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{FD7AB646-6EA1-454C-B63C-E17A1480888B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boomerang.Models", "Boomerang.Models\Boomerang.Models.csproj", "{67CB8131-A1ED-45DB-BE3F-0FA198805E73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boomerang.Models", "Boomerang.Models\Boomerang.Models.csproj", "{67CB8131-A1ED-45DB-BE3F-0FA198805E73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boomerang.Services", "Boomerang.Services\Boomerang.Services.csproj", "{EFE27C5C-EFD8-47AC-AF7D-E5B4079669F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boomerang.Services", "Boomerang.Services\Boomerang.Services.csproj", "{EFE27C5C-EFD8-47AC-AF7D-E5B4079669F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boomerang.Contracts", "Boomerang.Contracts\Boomerang.Contracts.csproj", "{98895987-F3CA-40A8-8441-9D8F832743A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boomerang.Contracts", "Boomerang.Contracts\Boomerang.Contracts.csproj", "{98895987-F3CA-40A8-8441-9D8F832743A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boomerang.Context", "Boomerang.Context\Boomerang.Context.csproj", "{C664B56E-D5F1-451D-BAC8-29B865202774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boomerang.Context", "Boomerang.Context\Boomerang.Context.csproj", "{C664B56E-D5F1-451D-BAC8-29B865202774}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boomerang.Configurations", "Boomerang.Configurations\Boomerang.Configurations.csproj", "{4A07CE71-E1AD-49A0-8733-C24D12048F56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boomerang.Configurations", "Boomerang.Configurations\Boomerang.Configurations.csproj", "{4A07CE71-E1AD-49A0-8733-C24D12048F56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boomerang.Dtos", "Boomerang.Dtos\Boomerang.Dtos.csproj", "{E60FC956-0552-4F04-B64F-82EF0BA971BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{4A07CE71-E1AD-49A0-8733-C24D12048F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A07CE71-E1AD-49A0-8733-C24D12048F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A07CE71-E1AD-49A0-8733-C24D12048F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E60FC956-0552-4F04-B64F-82EF0BA971BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E60FC956-0552-4F04-B64F-82EF0BA971BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E60FC956-0552-4F04-B64F-82EF0BA971BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E60FC956-0552-4F04-B64F-82EF0BA971BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{98895987-F3CA-40A8-8441-9D8F832743A4} = {FD7AB646-6EA1-454C-B63C-E17A1480888B}
 		{C664B56E-D5F1-451D-BAC8-29B865202774} = {FD7AB646-6EA1-454C-B63C-E17A1480888B}
 		{4A07CE71-E1AD-49A0-8733-C24D12048F56} = {FD7AB646-6EA1-454C-B63C-E17A1480888B}
+		{E60FC956-0552-4F04-B64F-82EF0BA971BB} = {FD7AB646-6EA1-454C-B63C-E17A1480888B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE194B5D-26F8-4A60-9A42-9E2A8AD02644}

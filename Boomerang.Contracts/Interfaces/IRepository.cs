@@ -33,6 +33,8 @@ namespace Boomerang.Contracts.Interfaces
 
         IQueryable<TEntity> QueryableSql(string sql, params object[] parameters);
 
+        IEnumerable<TEntity> GetAll();
+
         void Update(TEntity item);
     }
 }

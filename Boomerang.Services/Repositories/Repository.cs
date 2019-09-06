@@ -102,5 +102,10 @@ namespace Boomerang.Services.Repositories
         {
             _context.Entry(item).State = EntityState.Modified;
         }
+
+        public IEnumerable<TEntity> GetAll()
+        {
+            return Set.ToList();
+        }
     }
 }

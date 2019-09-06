@@ -18,7 +18,7 @@ namespace Boomerang.Configurations.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Name).IsRequired().HasColumnType("varchar(32)").IsRequired();
-            builder.Property(x => x.Description).HasColumnType("varchar(256)").IsRequired();
+            builder.Property(x => x.Description).HasColumnType("varchar(256)");
             builder.Property(x => x.Type).HasColumnType("int").IsRequired();
 
             builder.HasMany(x => x.Sections).WithOne(i => i.Category).HasForeignKey(i => i.CategoryId);
