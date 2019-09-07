@@ -1,4 +1,5 @@
-﻿using Boomerang.Contracts.Interfaces;
+﻿using AutoMapper;
+using Boomerang.Contracts.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,9 @@ namespace Boomerang.Services
     {
         ICategoryRepository Categories { get; set; }
         ISiteRepository Sites { get; set; }
+        IWordRepository Words { get; set; }
+        IMapper Mapper { get; }
+
+        bool Save();
     }
 }
