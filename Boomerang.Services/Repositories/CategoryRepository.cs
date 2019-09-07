@@ -5,6 +5,7 @@ using Boomerang.Contracts.Interfaces;
 using Boomerang.Dtos;
 using Boomerang.Dtos.Resources;
 using Boomerang.Models.Models;
+using Boomerang.Services.Exceptions;
 using Boomerang.Services.Queries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
@@ -46,6 +47,16 @@ namespace Boomerang.Services.Repositories
             }
 
             var dto = _mapper.Map<IEnumerable<CategoryDto>>(_query);
+
+            if (resources.Id != null)
+            {
+                var category = dto.FirstOrDefault(x => x.Id == resources.Id);
+
+                if (category == null)
+                    throw new NotFoundException();
+
+                return new List<CategoryDto> { category };
+            }
 
             return dto;
         }

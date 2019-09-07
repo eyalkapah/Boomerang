@@ -9,5 +9,7 @@ namespace Boomerang.Dtos.Resources
     public class CategoryResources
     {
         public string Includes { get; set; }
+
+        public int? Id { get; set; }
     }
 }
