@@ -86,5 +86,58 @@ namespace Boomerang.WebService.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteWord(int id)
+        {
+            try
+            {
+                var word = _unitOfWork.Words.Find(id);
+
+                if (word == null)
+                    return NotFound();
+
+                _unitOfWork.Words.Delete(word);
+
+                if (!_unitOfWork.Save())
+                    throw new Exception("Failed to delete word.");
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateWord(int id, [FromBody] WordForUpdateDto wordForUpdateDto)
+        {
+            try
+            {
+                if (wordForUpdateDto == null)
+                    return BadRequest();
+
+                if (!ModelState.IsValid)
+                {
+                    return new UnprocessableEntityObjectResult(ModelState);
+                }
+
+                var word = _unitOfWork.Words.UpdateWord(id, wordForUpdateDto);
+
+                if (!_unitOfWork.Save())
+                    throw new Exception("Failed to save word.");
+
+                return NoContent();
+            }
+            catch (DuplicateNameException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

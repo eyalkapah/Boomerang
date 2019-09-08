@@ -47,5 +47,18 @@ namespace Boomerang.Services.Repositories
         }
 
         public IEnumerable<WordDto> GetWords() => _mapper.Map<IEnumerable<WordDto>>(_query);
+
+        public Word UpdateWord(int id, WordForUpdateDto dto)
+        {
+            if (_query.Any(x => x.Name.Equals(dto.Name) && !x.Id.Equals(id)))
+                throw new DuplicateNameException(dto.Name);
+
+            var word = Find(id);
+
+            if (word == null)
+                throw new NotFoundException();
+
+            return _mapper.Map(dto, word);
+        }
     }
 }

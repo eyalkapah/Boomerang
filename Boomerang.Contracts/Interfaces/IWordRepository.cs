@@ -15,5 +15,7 @@ namespace Boomerang.Contracts.Interfaces
         WordDto GetWord(int id);
 
         Word CreateWord(WordForCreationDto wordForCreationDto);
+
+        Word UpdateWord(int id, WordForUpdateDto wordForUpdateDto);
     }
 }
