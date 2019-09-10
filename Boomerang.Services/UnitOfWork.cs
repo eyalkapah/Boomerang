@@ -31,7 +31,7 @@ namespace Boomerang.Services
             Sites = new SiteRepository(context);
             Categories = new CategoryRepository(context, mapper);
             Words = new WordRepository(context, mapper);
-            ComplexWords = new ComplexWordRepository(context);
+            ComplexWords = new ComplexWordRepository(context, mapper);
             Packages = new PackageRepository(context);
             Enrollments = new EnrollmentRepository(context);
             PreDbs = new PreDbRepository(context);

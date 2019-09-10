@@ -14,7 +14,7 @@ namespace Boomerang.Services.Queries
         {
             query = query.Include(x => x.Sections).ThenInclude(x => x.Enrollments).ThenInclude(x => x.Packages).ThenInclude(x => x.Package).ThenInclude(x => x.Word);
 
-            query = query.Include(x => x.Sections).ThenInclude(x => x.Enrollments).ThenInclude(x => x.Packages).ThenInclude(x => x.Package).ThenInclude(x => x.ComplexWord);
+            query = query.Include(x => x.Sections).ThenInclude(x => x.Enrollments).ThenInclude(x => x.Packages).ThenInclude(x => x.Package).ThenInclude(x => x.ComplexWord).ThenInclude(x => x.Words).ThenInclude(x => x.Word);
 
             return query;
         }

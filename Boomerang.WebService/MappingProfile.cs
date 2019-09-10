@@ -23,8 +23,12 @@ namespace Boomerang.WebService
             CreateMap<Site, SiteDto>();
             CreateMap<IrcInfo, IrcInfoDto>();
             CreateMap<PackageEnrollment, PackageEnrollmentDto>();
+            CreateMap<ComplexWordMap, ComplexWordMapDto>();
+            CreateMap<WordBaseForCreationDto, WordBase>();
             CreateMap<WordForCreationDto, Word>();
             CreateMap<WordForUpdateDto, Word>();
+            CreateMap<ComplexWordForCreationDto, ComplexWord>();
+            CreateMap<ComplexWordMapForCreationDto, ComplexWordMap>();
             //CreateMap<Course, Details.Model>();
             //CreateMap<Create.Command, Course>(MemberList.Source).ForSourceMember(c => c.Number, opt => opt.Ignore());
             //CreateMap<Course, Edit.Command>().ReverseMap();

@@ -13,6 +13,7 @@ namespace Boomerang.Services
         ICategoryRepository Categories { get; set; }
         ISiteRepository Sites { get; set; }
         IWordRepository Words { get; set; }
+        IComplexWordRepository ComplexWords { get; set; }
         IMapper Mapper { get; }
 
         bool Save();

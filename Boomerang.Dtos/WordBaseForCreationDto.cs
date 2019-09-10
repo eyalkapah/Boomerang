@@ -1,24 +1,24 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Boomerang.Dtos
 {
-    public class WordBaseDto
+    public class WordBaseForCreationDto
     {
-        [JsonProperty(Order = 1)]
-        public int Id { get; set; }
-
-        [JsonProperty(Order = 2)]
+        [Required]
+        [MaxLength(32)]
         public string Name { get; set; }
 
-        [JsonProperty(Order = 3)]
+        [Required]
+        [MaxLength(256)]
         public string Description { get; set; }
 
-        [JsonProperty(Order = 4)]
+        [Required]
+        [MaxLength(64)]
         public string Classification { get; set; }
     }
 }
