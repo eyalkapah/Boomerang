@@ -8,6 +8,5 @@ namespace Boomerang.Dtos
 {
     public class ComplexWordForCreationDto : WordBaseForCreationDto
     {
-        public ICollection<ComplexWordMapForCreationDto> Words { get; set; }
     }
 }

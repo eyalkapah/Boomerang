@@ -23,25 +23,6 @@ namespace Boomerang.WebService.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet(Name = "GetComplexWords")]
-        public IActionResult GetComplexWords([FromQuery] ComplexWordResources resources)
-        {
-            try
-            {
-                var complexWords = _unitOfWork.ComplexWords.GetComplexWords(resources);
-
-                return Ok(complexWords);
-            }
-            catch (NotFoundException)
-            {
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-
         [HttpPost]
         public IActionResult CreateComplexWord([FromBody] ComplexWordForCreationDto complexWordForCreationDto)
         {
@@ -67,6 +48,25 @@ namespace Boomerang.WebService.Controllers
             catch (CreationException ex)
             {
                 return new UnprocessableEntityObjectResult(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet(Name = "GetComplexWords")]
+        public IActionResult GetComplexWords([FromQuery] ComplexWordResources resources)
+        {
+            try
+            {
+                var complexWords = _unitOfWork.ComplexWords.GetComplexWords(resources);
+
+                return Ok(complexWords);
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
             }
             catch (Exception ex)
             {

@@ -36,7 +36,7 @@ namespace Boomerang.Services.Repositories
 
             var complexWord = _mapper.Map<ComplexWord>(dto);
 
-            Set.Add(complexWord);
+            var entry = Set.Add(complexWord);
 
             return complexWord;
         }
