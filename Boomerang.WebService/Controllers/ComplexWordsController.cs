@@ -55,6 +55,29 @@ namespace Boomerang.WebService.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteComplexWord(int id)
+        {
+            try
+            {
+                var complexWord = _unitOfWork.ComplexWords.Find(id);
+
+                if (complexWord == null)
+                    return NotFound();
+
+                _unitOfWork.ComplexWords.Delete(complexWord);
+
+                if (!_unitOfWork.Save())
+                    throw new Exception("Failed to delete complex word.");
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpGet(Name = "GetComplexWords")]
         public IActionResult GetComplexWords([FromQuery] ComplexWordResources resources)
         {
@@ -67,6 +90,36 @@ namespace Boomerang.WebService.Controllers
             catch (NotFoundException)
             {
                 return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateComplexWord(int id, [FromBody] ComplexWordForUpdateDto complexWordForUpdateDto)
+        {
+            try
+            {
+                if (complexWordForUpdateDto == null)
+                    return BadRequest();
+
+                if (!ModelState.IsValid)
+                {
+                    return new UnprocessableEntityObjectResult(ModelState);
+                }
+
+                var word = _unitOfWork.Words.UpdateWord(id, complexWordForUpdateDto);
+
+                if (!_unitOfWork.Save())
+                    throw new Exception("Failed to save word.");
+
+                return NoContent();
+            }
+            catch (DuplicateNameException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
