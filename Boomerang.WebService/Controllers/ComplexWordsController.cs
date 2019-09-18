@@ -110,7 +110,7 @@ namespace Boomerang.WebService.Controllers
                     return new UnprocessableEntityObjectResult(ModelState);
                 }
 
-                var word = _unitOfWork.Words.UpdateWord(id, complexWordForUpdateDto);
+                var word = _unitOfWork.ComplexWords.UpdateComplexWord(id, complexWordForUpdateDto);
 
                 if (!_unitOfWork.Save())
                     throw new Exception("Failed to save word.");

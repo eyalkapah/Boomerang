@@ -11,8 +11,10 @@ namespace Boomerang.Contracts.Interfaces
 {
     public interface IComplexWordRepository : IRepository<ComplexWord>
     {
+        ComplexWord CreateWord(ComplexWordForCreationDto complexWordForCreationDto);
+
         IEnumerable<ComplexWordDto> GetComplexWords(ComplexWordResources resources);
 
-        ComplexWord CreateWord(ComplexWordForCreationDto complexWordForCreationDto);
+        ComplexWord UpdateComplexWord(int id, ComplexWordForUpdateDto complexWordForUpdateDto);
     }
 }
